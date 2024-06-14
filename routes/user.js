@@ -11,14 +11,15 @@ router.get("/:id", auth, (req, res) => {
   if (!user) return res.status(404).send();
 
   const listings = listingsStore.filterListings(
-    listing => listing.userId === userId
+    (listing) => listing.userId === userId
   );
 
   res.send({
     id: user.id,
-    name: user.name,
+    fistName: user.fistName,
+    lastName: user.lastName,
     email: user.email,
-    listings: listings.length
+    listings: listings.length,
   });
 });
 
